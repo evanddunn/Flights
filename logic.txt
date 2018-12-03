@@ -24,4 +24,4 @@ cheaper before we append it)
 
 1. when a user chooses to reserve a flight, clear the body and build a totally new
 page where the user inputs ASL info. Then a lot of backend updating needs to happen
-from the data in the form when the user submits the form 
+from the data in the form when the user submits the form
