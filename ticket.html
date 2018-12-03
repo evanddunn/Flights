@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script src="final.js"></script>
+  <script src="ticket.js"></script>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -89,13 +89,13 @@
    <p>Let us book your next trip!</p>
 
    <form>
-     <div>
-     <p><input class="w3-input w3-padding-16 w3-border w3-third" type="text" placeholder="First Name" required name="First Name"></p>
-     <p><input class="w3-input w3-padding-16 w3-border w3-third" type="text" placeholder="Middle Name" required name="Middle Name"></p>
-     <p><input class="w3-input w3-padding-16 w3-border w3-third" type="text" placeholder="Last Name" required name="Last Name"></p>
+     <div id="aslInput">
+     <p><input class="w3-input w3-padding-16 w3-border w3-third" type="text" placeholder="First Name" required name="First Name" id="firstNameInput"></p>
+     <p><input class="w3-input w3-padding-16 w3-border w3-third" type="text" placeholder="Middle Name" required name="Middle Name" id="middleNameInput"></p>
+     <p><input class="w3-input w3-padding-16 w3-border w3-third" type="text" placeholder="Last Name" required name="Last Name" id="lastNameInput"></p>
      <br>
-     <p><input class="w3-input w3-padding-16 w3-border w3-half" type="number" placeholder="Age" required name="Age" min="0" max="130"></p>
-     <p><select name="gender" class="w3-select w3-half w3-padding-16 w3-border">
+     <p><input class="w3-input w3-padding-16 w3-border w3-half" type="number" placeholder="Age" required name="Age" min="0" max="130" id="ageInput"></p>
+     <p><select name="gender" class="w3-select w3-half w3-padding-16 w3-border" id="genderSelect">
        <option value="male">Male</option>
        <option value="Female">Female</option>
        <option value="other">Other</option>
