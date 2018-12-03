@@ -10,8 +10,12 @@ $(document).ready(function () {
         dataType: 'json',
         xhrFields: {withCredientials: true},
     });
-    
+
     $('button.w3-button.w3-dark-grey').click(function() {
         alert('howdy');
+        let depart = $('#departingInputInput').val();
+        let arrive = $('#arrivingInputInput').val();
+        let date = $('#dateInputInput').val();
+        alert("depart: "+depart+" arrive: "+arrive+" date: "+date);
     });
 })
