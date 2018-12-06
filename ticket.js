@@ -11,14 +11,13 @@ $(document).ready(function () {
         xhrFields: {withCredientials: true},
     });
 
-    $('button.w3-button.w3-red.w3-margin-top.w3-right').click(function() {
+    $('button.w3-button.w3-margin-bottom.w3-red.w3-right').click(function() {
         alert('howdy');
         let firstName = $('#firstNameInput').val();
         let lastName = $('#lastNameInput').val();
         let middleName = $('#middleNameInput').val();
         let age = $('#ageInput').val();
-        //let gender = $('#aslInput').children("option:selected").val();
-        let gender = $('select.w3-select.w3-half.w3-padding-16.w3-border').children("option:selected").val();
+        let gender = $('#genderOptions option:selected').text();
         alert("firstName: "+firstName+" lastName: "+lastName+" middleName: "+middleName+" age: "+age+" gender: "+gender);
     });
 })

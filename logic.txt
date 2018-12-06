@@ -24,7 +24,6 @@ cheaper before we append it)
 
 1. when a user chooses to reserve a flight, clear the body and build a totally new
 page where the user inputs ASL info. Then a lot of backend updating needs to happen
-<<<<<<< HEAD
 from the data in the form when the user submits the form
 
 
@@ -32,6 +31,3 @@ Karley To-Do:
 -work on getting value from slider
 -work on styling slider
 -work on styling gender option
-=======
-from the data in the form when the user submits the form 
->>>>>>> 08f9cd7be018a4eb3e54e4fd871b67b81358f97f

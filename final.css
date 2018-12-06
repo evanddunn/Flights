@@ -37,13 +37,13 @@
   display: none; /*hide original SELECT element:*/
 }
 .select-selected {
-  background-color: DodgerBlue;
+  background-color: grey;
 }
 /*style the arrow inside the select element:*/
 .select-selected:after {
   position: absolute;
   content: "";
-  top: 14px;
+  top: 26px;
   right: 10px;
   width: 0;
   height: 0;
@@ -53,12 +53,12 @@
 /*point the arrow upwards when the select box is open (active):*/
 .select-selected.select-arrow-active:after {
   border-color: transparent transparent #fff transparent;
-  top: 7px;
+  top: 14px;
 }
 /*style the items (options), including the selected item:*/
 .select-items div,.select-selected {
   color: #ffffff;
-  padding: 8px 16px;
+  padding: 16px 16px;
   border: 1px solid transparent;
   border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
   cursor: pointer;
@@ -67,7 +67,7 @@
 /*style items (options):*/
 .select-items {
   position: absolute;
-  background-color: DodgerBlue;
+  background-color: darkgrey;
   top: 100%;
   left: 0;
   right: 0;
@@ -79,4 +79,8 @@
 }
 .select-items div:hover, .same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+input[type=number]{
+    width: 252px;
 }
