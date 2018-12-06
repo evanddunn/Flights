@@ -1,0 +1,27 @@
+logic:
+
+1. on search button click, the 3 data pieces we ask for (whereTo, whereFrom, date),
+need to be fed into (one or more) API calls to get back all the flights from
+whereTo to whereFrom on date.
+2. the flights from that API call need to be formatted to be displayed in a user
+friendly way, showing the departure time, arrival time, and cost
+2.5 append button to allow user to reserve flight
+3. at the bottom a slider needs to be appended
+
+~more difficult~
+
+1. as the slider moves, we need to somehow constantly be checking for airports
+within that distance from the whereTo airport. Once an alternative airport is found,
+we need to call with the same whereFrom and the new whereTo on the same date and
+append that, along with
+  ~even harder~
+the drive time from new whereTo from original whereTo and how much cheaper
+new whereTo is from original whereTo (meaning we'll need to check that it is in fact
+cheaper before we append it)
+
+
+~back the hardness down a bit~
+
+1. when a user chooses to reserve a flight, clear the body and build a totally new
+page where the user inputs ASL info. Then a lot of backend updating needs to happen
+from the data in the form when the user submits the form 
