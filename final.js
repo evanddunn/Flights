@@ -30,8 +30,9 @@ $(document).ready(function () {
         let firstName = $(this).parent().siblings('div.name-input').children('p.first-name-wrapper').children('input.first-name').val();
         let lastName = $(this).parent().siblings('div.name-input').children('p.last-name-wrapper').children('input.last-name').val();
         let middleName = $(this).parent().siblings('div.name-input').children('p.middle-name-wrapper').children('input.middle-name').val();
-        let age = $('#ageInput').val();
-        let gender = $('#genderOptions option:selected').text();
+        let age = $(this).siblings('p.age-wrapper').children('input.age-input').val();
+        //let gender = $('#genderOptions option:selected').text();
+        let gender = $(this).siblings('p.gender-wrapper-wrapper').children('div.gender-wrapper').children('select.genderOptions option:selected').val();
         alert("firstName: "+firstName+" lastName: "+lastName+" middleName: "+middleName+" age: "+age+" gender: "+gender);
     });
 
