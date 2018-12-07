@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>HOME</title>
+  <title>TICKET</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="final.js"></script>
-  <link rel="stylesheet" href="w3.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="final.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -48,100 +48,232 @@
             <input class="w3-input w3-border" type="date" placeholder="Jan 1" id="dateInputInput">
           </div>
         </div>
-        <p><button class="w3-button w3-dark-grey">Search</button></p>
+        <p><button class="w3-button w3-dark-grey search-button">Search</button></p>
       </div>
 
     </header>
 
     <!-- Page content -->
     <div class="w3-content" style="max-width:1100px;">
-      <div class="w3-container w3-margin-top w3-center">
-        <h1>Results</h1>
+      <div class="w3-container w3-margin-top">
+        <h2>Flights</h2>
       </div>
     </div>
   </div>
 
- <div class="w3-row-padding">
-   <div class="w3-half w3-margin-bottom">
-     <div class="w3-container w3-black w3-opacity" id="card1" hidden="true">
-       <h3>RNO to RDU</h3>
-       <p class="w3-opacity">Cost: $400</p>
-       <span class="depart">Depart: 1:15 PM</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="arrive">Arrive 4:50 PM</span>
-       <p class="airline">Airline: Delta</p>
-       <button class="w3-button w3-margin-bottom w3-red w3-right">Buy Tickets</button>
-     </div>
-   </div>
+  <div class="w3-row-padding">
+    <div class="w3-half w3-margin-bottom">
+      <div class="w3-container w3-margin-top">
+        <div class="w3-container w3-black w3-opacity">
+          <div class="card" id="card1" hidden="true">
+            <div class="flight-info">
+              <h3>RNO to RDU</h3>
+              <p class="w3-opacity">Cost: $400</p>
+              <span class="depart">Depart: 1:15 PM</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="arrive">Arrive 4:50 PM</span>
+              <p class="airline">Airline: Delta</p>
+              <button class="w3-button w3-margin-bottom w3-red w3-right buy-ticket">Buy Ticket</button>
+            </div>
+            <div id="aslInput" class="aslInputClass">
+              <div class="w3-half name-input">
+                <p class="first-name-wrapper"><input class="w3-padding-16 first-name" type="text" placeholder="First Name" required name="First Name" size="30" ></p>
+                <p class="middle-name-wrapper"><input class="w3-padding-16 middle-name" type="text" placeholder="Middle Name" required name="Middle Name" size="30" ></p>
+                <p class="last-name-wrapper"><input class="w3-padding-16 last-name" type="text" placeholder="Last Name" required name="Last Name" size="30" ></p>
+              </div>
+              <div class="w3-half age-gender-input">
+                <p>
+                  <div class="custom-select" style="width:252px;">
+                    <select id="genderOptions">
+                      <option value="0">Gender:</option>
+                      <option value="1">Male</option>
+                      <option value="2">Female</option>
+                      <option value="3">Other</option>
+                    </select>
+                  </div>
+                </p>
+                <p><input class="w3-padding-16" type="number" placeholder="Age" required name="Age" min="0" max="130" size="30" id="ageInput"></p>
+                <button class="w3-button w3-margin-bottom w3-red w3-right reserve-ticket" style="margin-right:23px">Reserve Ticket</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-   <div class="w3-half w3-margin-bottom">
-     <div class="w3-container w3-black w3-opacity" id="card2" hidden="true">
-       <h3>RNO to RDU</h3>
-       <p class="w3-opacity">Cost: $400</p>
-       <span class="depart">Depart: 1:15 PM</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="arrive">Arrive 4:50 PM</span>
-       <p>Airline: Delta</p>
-       <button class="w3-button w3-margin-bottom w3-red w3-right">Buy Tickets</button>
-     </div>
-   </div>
+    <div class="w3-half w3-margin-bottom">
+        <div class="w3-container w3-margin-top">
+          <div class="w3-container w3-black w3-opacity">
+            <div class="card" id="card2" hidden="true">
+              <div class="flight-info">
+                <h3>RNO to RDU</h3>
+                <p class="w3-opacity">Cost: $400</p>
+                <span class="depart">Depart: 1:15 PM</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="arrive">Arrive 4:50 PM</span>
+                <p class="airline">Airline: Delta</p>
+                <button class="w3-button w3-margin-bottom w3-red w3-right buy-ticket">Buy Ticket</button>
+              </div>
+              <div id="aslInput" class="aslInputClass">
+                <div class="w3-half name-input">
+                  <p class="first-name-wrapper"><input class="w3-padding-16 first-name" type="text" placeholder="First Name" required name="First Name" size="30" ></p>
+                  <p class="middle-name-wrapper"><input class="w3-padding-16 middle-name" type="text" placeholder="Middle Name" required name="Middle Name" size="30" ></p>
+                  <p class="last-name-wrapper"><input class="w3-padding-16 last-name" type="text" placeholder="Last Name" required name="Last Name" size="30" ></p>
+                </div>
+                <div class="w3-half age-gender-input">
+                  <p>
+                    <div class="custom-select" style="width:252px;">
+                      <select id="genderOptions">
+                        <option value="0">Gender:</option>
+                        <option value="1">Male</option>
+                        <option value="2">Female</option>
+                        <option value="3">Other</option>
+                      </select>
+                    </div>
+                  </p>
+                  <p><input class="w3-padding-16" type="number" placeholder="Age" required name="Age" min="0" max="130" size="30" id="ageInput"></p>
+                  <button class="w3-button w3-margin-bottom w3-red w3-right reserve-ticket" style="margin-right:23px">Reserve Ticket</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
 
- </div>
- <div class="w3-row-padding">
-   <div class="w3-half w3-margin-bottom">
-     <div class="w3-container w3-black w3-opacity" id="card3" hidden="true">
-       <h3>RNO to RDU</h3>
-       <p class="w3-opacity">Cost: $400</p>
-       <p>Depart: 1:15 PM &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Arrive 4:50 PM</p>
-       <p>Airline: Delta</p>
-       <button class="w3-button w3-margin-bottom w3-red w3-right">Buy Tickets</button>
-     </div>
+  <div class="w3-row-padding">
+    <div class="w3-half w3-margin-bottom">
+      <div class="w3-container w3-margin-top">
+        <div class="w3-container w3-black w3-opacity" style="height: 226px;">
+          <h3>Search for Flights at Nearby Airports</h3>
+          <div class="slidecontainer">
+            <input type="range" min="100" max="1000" value="300" class="slider" id="myRange">
+            <p>Distance from Destination: <span id="demo"></span> miles</p>
 
-   </div>
-   <div class="w3-half w3-margin-bottom">
-     <div class="w3-container w3-black w3-opacity">
-       <div class="w3-container w3-margin-top">
-         <h3>Search for Flights at Nearby Airports</h3>
-         <div class="slidecontainer">
-           <input type="range" min="100" max="1000" value="300" class="slider" id="myRange">
-           <p>Distance from Destination: <span id="demo"></span> miles</p>
-          <br>
-          <br>
-         </div>
-       </div>
-     </div>
-   </div>
- </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-</div>
 
-<!-- Footer -->
-<footer class="w3-container w3-center w3-opacity w3-margin-bottom">
+  <!-- Footer -->
+  <footer class="w3-container w3-center w3-opacity w3-margin-bottom">
 
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
-</footer>
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+  </footer>
 
-<script>
-// Tabs
-function openLink(evt, linkName) {
-  var i, x, tablinks;
-  x = document.getElementsByClassName("myLink");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
+  <script>
+
+
+  function openLink(evt, linkName) {
+    var i, x, tablinks;
+    x = document.getElementsByClassName("myLink");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < x.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+    }
+    document.getElementById(linkName).style.display = "block";
+    evt.currentTarget.className += " w3-red";
   }
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < x.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+  // Click on the first tablink on load
+  document.getElementsByClassName("tablink")[0].click();
+
+  var slider = document.getElementById("myRange");
+  var output = document.getElementById("demo");
+  output.innerHTML = slider.value;
+
+  slider.oninput = function() {
+    output.innerHTML = this.value;
   }
-  document.getElementById(linkName).style.display = "block";
-  evt.currentTarget.className += " w3-red";
-}
-// Click on the first tablink on load
-document.getElementsByClassName("tablink")[0].click();
+  // Tabs
+  function openLink(evt, linkName) {
+    var i, x, tablinks;
+    x = document.getElementsByClassName("myLink");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < x.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+    }
+    document.getElementById(linkName).style.display = "block";
+    evt.currentTarget.className += " w3-red";
+  }
+  // Click on the first tablink on load
+  document.getElementsByClassName("tablink")[0].click();
 
-var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
-output.innerHTML = slider.value;
-
-slider.oninput = function() {
-  output.innerHTML = this.value;
-}
+  var x, i, j, selElmnt, a, b, c;
+  /*look for any elements with the class "custom-select":*/
+  x = document.getElementsByClassName("custom-select");
+  for (i = 0; i < x.length; i++) {
+    selElmnt = x[i].getElementsByTagName("select")[0];
+    /*for each element, create a new DIV that will act as the selected item:*/
+    a = document.createElement("DIV");
+    a.setAttribute("class", "select-selected");
+    a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+    x[i].appendChild(a);
+    /*for each element, create a new DIV that will contain the option list:*/
+    b = document.createElement("DIV");
+    b.setAttribute("class", "select-items select-hide");
+    for (j = 1; j < selElmnt.length; j++) {
+      /*for each option in the original select element,
+      create a new DIV that will act as an option item:*/
+      c = document.createElement("DIV");
+      c.innerHTML = selElmnt.options[j].innerHTML;
+      c.addEventListener("click", function(e) {
+        /*when an item is clicked, update the original select box,
+        and the selected item:*/
+        var y, i, k, s, h;
+        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        h = this.parentNode.previousSibling;
+        for (i = 0; i < s.length; i++) {
+          if (s.options[i].innerHTML == this.innerHTML) {
+            s.selectedIndex = i;
+            h.innerHTML = this.innerHTML;
+            y = this.parentNode.getElementsByClassName("same-as-selected");
+            for (k = 0; k < y.length; k++) {
+              y[k].removeAttribute("class");
+            }
+            this.setAttribute("class", "same-as-selected");
+            break;
+          }
+        }
+        h.click();
+      });
+      b.appendChild(c);
+    }
+    x[i].appendChild(b);
+    a.addEventListener("click", function(e) {
+      /*when the select box is clicked, close any other select boxes,
+      and open/close the current select box:*/
+      e.stopPropagation();
+      closeAllSelect(this);
+      this.nextSibling.classList.toggle("select-hide");
+      this.classList.toggle("select-arrow-active");
+    });
+  }
+  function closeAllSelect(elmnt) {
+    /*a function that will close all select boxes in the document,
+    except the current select box:*/
+    var x, y, i, arrNo = [];
+    x = document.getElementsByClassName("select-items");
+    y = document.getElementsByClassName("select-selected");
+    for (i = 0; i < y.length; i++) {
+      if (elmnt == y[i]) {
+        arrNo.push(i)
+      } else {
+        y[i].classList.remove("select-arrow-active");
+      }
+    }
+    for (i = 0; i < x.length; i++) {
+      if (arrNo.indexOf(i)) {
+        x[i].classList.add("select-hide");
+      }
+    }
+  }
+  /*if the user clicks anywhere outside the select box,
+  then close all select boxes:*/
+  document.addEventListener("click", closeAllSelect);
 
 </script>
 </body>

@@ -13,7 +13,29 @@ $(document).ready(function () {
         xhrFields: { withCredentials: true }
     });
 
-    $('button.w3-button.w3-dark-grey').click(function() {
+    $('div.aslInputClass').hide();
+
+    $('button.buy-ticket').click(function(){
+      $(this).parent().siblings('div.aslInputClass').show();
+      $(this).hide();
+    })
+
+
+
+    $('button.reserve-ticket').click(function(e) {
+      let test = $(this).parent().siblings('div.name-input').children('p.first-name-wrapper').children('input.first-name').val();
+      alert(test);
+        e.preventDefault();
+        alert('howdy');
+        let firstName = $(this).parent().siblings('div.name-input').children('p.first-name-wrapper').children('input.first-name').val();
+        let lastName = $(this).parent().siblings('div.name-input').children('p.last-name-wrapper').children('input.last-name').val();
+        let middleName = $(this).parent().siblings('div.name-input').children('p.middle-name-wrapper').children('input.middle-name').val();
+        let age = $('#ageInput').val();
+        let gender = $('#genderOptions option:selected').text();
+        alert("firstName: "+firstName+" lastName: "+lastName+" middleName: "+middleName+" age: "+age+" gender: "+gender);
+    });
+
+    $('button.search-button').click(function() {
         alert('howdy');
         let depart = $('#departingInputInput').val().toUpperCase();
         let arrive = $('#arrivingInputInput').val().toUpperCase();
@@ -63,9 +85,9 @@ $(document).ready(function () {
                     }
                     console.log(instances[0].info);
                     for(let i = 1; i <= instances.length; i++){
-                        //console.log(flights[i].departs_at);
+                        console.log(flights[i].departs_at);
                         let airline;
-                        let flightcard = $('#card' + i);
+                        let flightcard = $('#card' + i).children('div.flight-info');
                         let dep_at = flights[instances[i-1].info].departs_at;//instances[i-1].info.substring(11, 16);
                         let arr_at = flights[instances[i-1].info].arrives_at;
                         let airline_id = flights[instances[i-1].info].airline_id;
@@ -81,7 +103,7 @@ $(document).ready(function () {
                         flightcard.children('span.depart').text(`Departs: ${dep_at.substring(11, 16)}`);
                         flightcard.children('span.arrive').text(`Arrives: ${arr_at.substring(11, 16)}`);
                         flightcard.children('p.airline').text(`Airline: ${airline}`);
-                        flightcard.toggle();
+                        flightcard.parent().toggle();
                     }
                 });
             });
