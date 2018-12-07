@@ -15,6 +15,16 @@ $(document).ready(function () {
         },
         xhrFields: { withCredentials: true }
     });
+    
+    newMap();
+
+    var map;
+    function newMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: -34.397, lng: 150.644},
+            zoom: 8
+          });  
+    }
 
     $('div.aslInputClass').hide();
 

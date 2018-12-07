@@ -94,3 +94,8 @@ div.hotel-div {
 div.w3-black {
   box-shadow: 0px 4px 15px #434b43;
 }
+
+#map {
+  height: 100%;
+}
+
