@@ -25,7 +25,8 @@
 
   <!-- Header -->
   <header class="w3-display-container w3-content w3-hide-small" style="max-width:1500px">
-    <img class="w3-image" src="https://www.w3schools.com/w3images/london2.jpg" alt="London" width="1500" height="700">
+    <!-- <img class="w3-image" src="https://www.w3schools.com/w3images/london2.jpg" alt="London" width="1500" height="700"> -->
+    <img class="w3-image" src="https://dl2.pushbulletusercontent.com/HUZcvosJGbd769WUlak5EpvziR08PtT6/for_travelers_ec.jpg" alt="San Diego" width="1500" height="700">
     <div class="w3-display-middle" style="width:65%">
       <div class="w3-bar w3-black">
         <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Flight');"><i class="fa fa-plane w3-margin-right"></i>Flights</button>
@@ -57,13 +58,13 @@
       <!--BEGINNING OF CARD-->
       <div class=" w3-margin-bottom">
       <div class="w3-container w3-margin-top">
-        <div class="w3-container w3-black w3-opacity">
+        <div class="w3-container w3-black w3-opacity" hidden="true">
           <div class="card" id="card1" >
             <div class="flight-info">
               <h3>[depart] to [arrive]</h3>
-              <p class="w3-opacity">Confirmation Code: [confCode]</p>
-              <span class="depart">Depart: [departTime]</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="arrive">Arrive: [arriveTime]</span>
-              <p class="airline">Airline: [airline] &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Seat: [seat]</p>
+              <p class="w3-opacity confirmation-code">Confirmation Code: [confCode]</p>
+              <span class="depart-itin w3-left">Depart: [departTime]</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="arrive-itin w3-right" style="margin-right: 300px;">Arrive: [arriveTime]</span><br>
+              <span class="airline w3-left">Airline: [airline]</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="seat w3-right" style="margin-right: 300px;">Seat: [seat]</span><br>
               <button class="w3-button w3-margin-bottom w3-red w3-right cancel-ticket">Cancel Ticket</button>
             </div>
           </div>
@@ -73,7 +74,7 @@
   <!--END OF CARD-->
 
 <!--BEGINNING OF CARD-->
-<div class=" w3-margin-bottom">
+<div class=" w3-margin-bottom" hidden="true">
 <div class="w3-container w3-margin-top">
   <div class="w3-container w3-black w3-opacity">
     <div class="card" id="card1" >
