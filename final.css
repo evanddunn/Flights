@@ -85,3 +85,8 @@
 input[type=number]{
     width: 252px;
 }
+
+div.hotel-div {
+  overflow: scroll;
+  height: 350px;
+}
