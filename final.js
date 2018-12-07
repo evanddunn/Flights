@@ -29,6 +29,7 @@ $(document).ready(function () {
         let middleName = $(this).parent().siblings('div.name-input').children('p.middle-name-wrapper').children('input.middle-name').val();
         let age = $(this).siblings('p.age-wrapper').children('input.age-input').val();
         let gender = $(this).siblings('div.gender-wrapper').children('div.select-selected').text();
+        let email = $(this).siblings('p.email-wrapper').children('input.email-input').val();
     });
 
     $('button.search-button').click(function() {
@@ -81,7 +82,7 @@ $(document).ready(function () {
                     for(let i = 1; i <= instances.length; i++){
                         console.log(flights[i].departs_at);
                         let airline;
-                        let flightcard = $('#card' + i).children('div.flight-info');
+                        let flightcard = $('div.card#card' + i).children('div.flight-info');
                         let dep_at = flights[instances[i-1].info].departs_at;//instances[i-1].info.substring(11, 16);
                         let arr_at = flights[instances[i-1].info].arrives_at;
                         let airline_id = flights[instances[i-1].info].airline_id;

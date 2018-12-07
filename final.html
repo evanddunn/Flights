@@ -61,20 +61,16 @@
           <div class="card" id="card1" >
             <div class="flight-info">
               <h3>RNO to RDU</h3>
-              <p class="w3-opacity">Cost: $400</p>
+              <p class="w3-opacity">Confirmation Code: S94BV9</p>
               <span class="depart">Depart: 1:15 PM</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="arrive">Arrive 4:50 PM</span>
               <p class="airline">Airline: Delta</p>
-              <button class="w3-button w3-margin-bottom w3-red w3-right buy-ticket">Buy Ticket</button>
+              <button class="w3-button w3-margin-bottom w3-red w3-right cancel-ticket">Cancel Ticket</button>
             </div>
           </div>
       </div>
     </div>
   </div>
   <!--END OF CARD-->
-
-  <!--BEGINNING OF CARD-->
-
-<!--END OF CARD-->
 
 <!--BEGINNING OF CARD-->
 <div class=" w3-margin-bottom">
@@ -140,7 +136,7 @@
                   </div>
                 </p>
                 <p class="age-wrapper"><input class="w3-padding-16 age-input" type="number" placeholder="Age" required name="Age" min="0" max="130" size="30" ></p>
-                <button class="w3-button w3-margin-bottom w3-red w3-right reserve-ticket" style="margin-right:23px">Reserve Ticket</button>
+                <p class="email-wrapper"><input class="w3-padding-16 email-input" type="text" placeholder="Email" required name="Email" min="0" max="130" size="30" ></p>                <button class="w3-button w3-margin-bottom w3-red w3-right reserve-ticket" style="margin-right:23px">Reserve Ticket</button>
               </div>
             </div>
           </div>
@@ -149,41 +145,41 @@
     </div>
 
     <div class="w3-half w3-margin-bottom">
-        <div class="w3-container w3-margin-top">
-          <div class="w3-container w3-black w3-opacity">
-            <div class="card" id="card2" hidden="true">
-              <div class="flight-info">
-                <h3>RNO to RDU</h3>
-                <p class="w3-opacity">Cost: $400</p>
-                <span class="depart">Depart: 1:15 PM</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="arrive">Arrive 4:50 PM</span>
-                <p class="airline">Airline: Delta</p>
-                <button class="w3-button w3-margin-bottom w3-red w3-right buy-ticket">Buy Ticket</button>
+      <div class="w3-container w3-margin-top">
+        <div class="w3-container w3-black w3-opacity">
+          <div class="card" id="card2" hidden="true">
+            <div class="flight-info">
+              <h3>RNO to RDU</h3>
+              <p class="w3-opacity">Cost: $400</p>
+              <span class="depart">Depart: 1:15 PM</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="arrive">Arrive 4:50 PM</span>
+              <p class="airline">Airline: Delta</p>
+              <button class="w3-button w3-margin-bottom w3-red w3-right buy-ticket">Buy Ticket</button>
+            </div>
+            <div id="aslInput" class="aslInputClass">
+              <div class="w3-half name-input">
+                <p class="first-name-wrapper"><input class="w3-padding-16 first-name" type="text" placeholder="First Name" required name="First Name" size="30" ></p>
+                <p class="middle-name-wrapper"><input class="w3-padding-16 middle-name" type="text" placeholder="Middle Name" required name="Middle Name" size="30" ></p>
+                <p class="last-name-wrapper"><input class="w3-padding-16 last-name" type="text" placeholder="Last Name" required name="Last Name" size="30" ></p>
               </div>
-              <div id="aslInput" class="aslInputClass">
-                <div class="w3-half name-input">
-                  <p class="first-name-wrapper"><input class="w3-padding-16 first-name" type="text" placeholder="First Name" required name="First Name" size="30" ></p>
-                  <p class="middle-name-wrapper"><input class="w3-padding-16 middle-name" type="text" placeholder="Middle Name" required name="Middle Name" size="30" ></p>
-                  <p class="last-name-wrapper"><input class="w3-padding-16 last-name" type="text" placeholder="Last Name" required name="Last Name" size="30" ></p>
-                </div>
-                <div class="w3-half age-gender-input">
-                  <p>
-                    <div class="custom-select" style="width:252px;">
-                      <select id="genderOptions">
-                        <option value="0">Gender:</option>
-                        <option value="1">Male</option>
-                        <option value="2">Female</option>
-                        <option value="3">Other</option>
-                      </select>
-                    </div>
-                  </p>
-                  <p><input class="w3-padding-16" type="number" placeholder="Age" required name="Age" min="0" max="130" size="30" id="ageInput"></p>
-                  <button class="w3-button w3-margin-bottom w3-red w3-right reserve-ticket" style="margin-right:23px">Reserve Ticket</button>
-                </div>
+              <div class="w3-half age-gender-input">
+                <p class="gender-wrapper-wrapper">
+                  <div class="custom-select gender-wrapper" style="width:252px;">
+                    <select class="gender-options">
+                      <option value="0">Gender:</option>
+                      <option value="1">Male</option>
+                      <option value="2">Female</option>
+                      <option value="3">Other</option>
+                    </select>
+                  </div>
+                </p>
+                <p class="age-wrapper"><input class="w3-padding-16 age-input" type="number" placeholder="Age" required name="Age" min="0" max="130" size="30" ></p>
+                <p class="email-wrapper"><input class="w3-padding-16 email-input" type="text" placeholder="Email" required name="Email" min="0" max="130" size="30" ></p>                <button class="w3-button w3-margin-bottom w3-red w3-right reserve-ticket" style="margin-right:23px">Reserve Ticket</button>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
   </div>
 
   <div class="w3-row-padding">
@@ -191,8 +187,11 @@
       <div class="w3-container w3-margin-top">
         <div class="w3-container w3-black w3-opacity" style="height: 226px;">
           <h3>Search for Flights at Nearby Airports</h3>
+          <br>
           <div class="slidecontainer">
             <input type="range" min="100" max="1000" value="300" class="slider" id="myRange">
+            <br>
+            <br>
             <p>Distance from Destination: <span id="demo"></span> miles</p>
 
           </div>
