@@ -26,25 +26,24 @@ $(document).ready(function () {
       let test = $(this).parent().siblings('div.name-input').children('p.first-name-wrapper').children('input.first-name').val();
       alert(test);
         e.preventDefault();
-        alert('howdy');
         let firstName = $(this).parent().siblings('div.name-input').children('p.first-name-wrapper').children('input.first-name').val();
         let lastName = $(this).parent().siblings('div.name-input').children('p.last-name-wrapper').children('input.last-name').val();
         let middleName = $(this).parent().siblings('div.name-input').children('p.middle-name-wrapper').children('input.middle-name').val();
         let age = $(this).siblings('p.age-wrapper').children('input.age-input').val();
         //let gender = $('#genderOptions option:selected').text();
-        let gender = $(this).siblings('p.gender-wrapper-wrapper').children('div.gender-wrapper').children('select.genderOptions option:selected').val();
+        let gender = 'penis'; //$(this).siblings('p.gender-wrapper-wrapper').children('div.gender-wrapper').children('select.genderOptions option:selected').val();
         alert("firstName: "+firstName+" lastName: "+lastName+" middleName: "+middleName+" age: "+age+" gender: "+gender);
+        
+    
     });
 
     $('button.search-button').click(function() {
-        alert('howdy');
         let depart = $('#departingInputInput').val().toUpperCase();
         let arrive = $('#arrivingInputInput').val().toUpperCase();
         let date = $('#dateInputInput').val();
         let depID, arrID;
         let flights = new Array();
         let instances = new Array();
-        alert("depart: "+depart+" arrive: "+arrive+" date: "+date);
         $.ajax({
             url: root +'/airports?filter[code]=' + depart,
             type: 'GET',
