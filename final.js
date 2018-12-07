@@ -2,6 +2,7 @@ $(document).ready(function () {
     let body = $('body');
     let root = "http://comp426.cs.unc.edu:3001";
     let confcodes = new Array();
+    let itininfo = new Array();
     let confcodegen = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',1,2,3,4,5,6,7,8,9,0];
     $.ajax({
         url: root + '/sessions',
@@ -34,9 +35,14 @@ $(document).ready(function () {
         let email = $(this).siblings('p.email-wrapper').children('input.email-input').val();
         let cost = $(this).parent().parent().siblings('div.flight-info').data('cost');
         let planeID = $(this).parent().parent().siblings('div.flight-info').data('planeID');
+        let airline = $(this).parent().parent().siblings('div.flight-info').data('airline');
+        let depart = $(this).parent().parent().siblings('div.flight-info').data('depart');
+        let arrive = $(this).parent().parent().siblings('div.flight-info').data('arrive');
         let cabin = (cost >= 500) ? 'first' : 'economy';
         let row = (cabin == 'first') ? Math.floor(Math.random() * 4) + 1 : Math.floor(Math.random() * 26) + 4;
         let number = Math.floor(Math.random() * 4) + 1;
+        let departs_at = $(this).parent().parent().siblings('div.flight-info').children('span.depart').text().substring(8, 14);
+        let arrives_at = $(this).parent().parent().siblings('div.flight-info').children('span.arrive').text().substring(8, 14);
         confirm = confirm('Do you want to purchase this ticket for $' +cost +'?');
         if(!confirm) return;
         switch (number) {
@@ -89,6 +95,18 @@ $(document).ready(function () {
                         code+= confcodegen[Math.floor(Math.random() * confcodegen.length)];
                 }
                 confcodes.push(code);
+                let info = {
+                    "info": {
+                        "depart": depart,
+                        "arrive": arrive,
+                        "confirmation_code": code,
+                        "departs_at": departs_at,
+                        "arrives_at": arrives_at,
+                        "airline": airline,
+                        "seat": cabin + ' - ' +row+number
+                    }
+                };
+                info = JSON.stringify(info);
                 $.ajax({
                     url: root + '/itineraries',
                     type: 'POST',
@@ -96,7 +114,7 @@ $(document).ready(function () {
                         "itinerary": {
                             "confirmation_code": code,
                             "email":             email,
-                            "info":              ticket.id
+                            "info":  info 
                         }
                     },
                     xhrFields: { withCredentials: true }
@@ -172,6 +190,9 @@ $(document).ready(function () {
                         flightcard.data('cost', cost);
                         flightcard.data('instance', instances[i-1].id);
                         flightcard.data('planeID', flights[instances[i-1].info].plane_id);
+                        flightcard.data('airline', airline);
+                        flightcard.data('depart', depart);
+                        flightcard.data('arrive', arrive);
                         flightcard.children('h3').text(`${depart} to ${arrive}`);
                         flightcard.children('#cost').text('Cost: $' + cost);
                         flightcard.children('span.depart').text(`Departs: ${dep_at.substring(11, 16)}`);
