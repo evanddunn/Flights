@@ -1,6 +1,8 @@
 $(document).ready(function () {
     let body = $('body');
     let root = "http://comp426.cs.unc.edu:3001";
+    let confcodes = new Array();
+    let confcodegen = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',1,2,3,4,5,6,7,8,9,0];
     $.ajax({
         url: root + '/sessions',
         type: 'POST',
@@ -20,18 +22,91 @@ $(document).ready(function () {
       $(this).hide();
     })
 
-
-
     $('button.reserve-ticket').click(function(e) {
         e.preventDefault();
+        let seat, ticket;
         let firstName = $(this).parent().siblings('div.name-input').children('p.first-name-wrapper').children('input.first-name').val();
         let lastName = $(this).parent().siblings('div.name-input').children('p.last-name-wrapper').children('input.last-name').val();
         let middleName = $(this).parent().siblings('div.name-input').children('p.middle-name-wrapper').children('input.middle-name').val();
         let age = $(this).siblings('p.age-wrapper').children('input.age-input').val();
         let gender = $(this).siblings('div.gender-wrapper').children('div.select-selected').text();
+        let instanceID = $(this).parent().parent().siblings('div.flight-info').data('instance');
+        let cost = $(this).parent().parent().siblings('div.flight-info').data('cost');
+        let planeID = $(this).parent().parent().siblings('div.flight-info').data('planeID');
+        let cabin = (cost >= 500) ? 'first' : 'economy';
+        let row = (cabin == 'first') ? Math.floor(Math.random() * 4) + 1 : Math.floor(Math.random() * 26) + 4;
+        let number = Math.floor(Math.random() * 4) + 1;
+        confirm = confirm('Do you want to purchase this ticket for $' +cost +'?');
+        if(!confirm) return;
+        switch (number) {
+            case 1: number = "A";
+            break;
+            case 2: number = "B";
+            break;
+            case 3: number = "C";
+            break;
+            case 4: number = "D";
+            break;
+            default: number = "D"
+        }
+        $.ajax({
+            url: root + '/seats',
+            type: 'POST',
+            data: {
+                "seat": {
+                    "plane_id":  planeID,
+                    "row":       row,
+                    "number":    number,
+                    "cabin":     cabin,
+                    "is_window": true
+                  }
+            },
+            xhrFields: { withCredentials: true }
+        }).done(function (data) {
+            seat = data;
+            $.ajax({
+                url: root + '/tickets',
+                type: 'POST',
+                data: {
+                    "ticket": {
+                      "first_name":   firstName,
+                      "middle_name":  middleName,
+                      "last_name":    lastName,
+                      "age":          age,
+                      "gender":       gender,
+                      "is_purchased": true,
+                      "price_paid":   cost,
+                      "instance_id":  instanceID,
+                      "seat_id":      seat.id
+                    }
+                },
+                xhrFields: { withCredentials: true }
+              }).done(function (data) {
+                ticket = data;
+                let code = '';
+                for(let i = 0; i < 6; i++){
+                        code+= confcodegen[Math.floor(Math.random() * confcodegen.length)];
+                }
+                confcodes.push(code);
+                $.ajax({
+                    url: root + '/itineraries',
+                    type: 'POST',
+                    data: {
+                        "itinerary": {
+                            "confirmation_code": code,
+                            "email":             "kmp@cs.unc.edu",
+                            "info":              ticket.id
+                        }
+                    },
+                    xhrFields: { withCredentials: true }
+                  });
+              });
+        });
+        
     });
 
     $('button.search-button').click(function() {
+        $('h2').show();
         let depart = $('#departingInputInput').val().toUpperCase();
         let arrive = $('#arrivingInputInput').val().toUpperCase();
         let date = $('#dateInputInput').val();
@@ -81,7 +156,7 @@ $(document).ready(function () {
                     for(let i = 1; i <= instances.length; i++){
                         console.log(flights[i].departs_at);
                         let airline;
-                        let flightcard = $('#card' + i).children('div.flight-info');
+                        let flightcard = $('div.card#card' + i).children('div.flight-info');
                         let dep_at = flights[instances[i-1].info].departs_at;//instances[i-1].info.substring(11, 16);
                         let arr_at = flights[instances[i-1].info].arrives_at;
                         let airline_id = flights[instances[i-1].info].airline_id;
@@ -93,11 +168,16 @@ $(document).ready(function () {
                         }).done(function (data) {
                             airline = data.name;
                         });
-                        flightcard.children('h3').text(`${depart} to ${arrive}`)
+                        cost = Math.floor((Math.random() * 500) + 200);
+                        flightcard.data('cost', cost);
+                        flightcard.data('instance', instances[i-1].id);
+                        flightcard.data('planeID', flights[instances[i-1].info].plane_id);
+                        flightcard.children('h3').text(`${depart} to ${arrive}`);
+                        flightcard.children('#cost').text('Cost: $' + cost);
                         flightcard.children('span.depart').text(`Departs: ${dep_at.substring(11, 16)}`);
                         flightcard.children('span.arrive').text(`Arrives: ${arr_at.substring(11, 16)}`);
                         flightcard.children('p.airline').text(`Airline: ${airline}`);
-                        flightcard.parent().toggle();
+                        flightcard.parent().show();
                     }
                 });
             });
