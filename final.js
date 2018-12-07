@@ -31,6 +31,7 @@ $(document).ready(function () {
         let age = $(this).siblings('p.age-wrapper').children('input.age-input').val();
         let gender = $(this).siblings('div.gender-wrapper').children('div.select-selected').text();
         let instanceID = $(this).parent().parent().siblings('div.flight-info').data('instance');
+        let email = $(this).siblings('p.email-wrapper').children('input.email-input').val();
         let cost = $(this).parent().parent().siblings('div.flight-info').data('cost');
         let planeID = $(this).parent().parent().siblings('div.flight-info').data('planeID');
         let cabin = (cost >= 500) ? 'first' : 'economy';
@@ -94,7 +95,7 @@ $(document).ready(function () {
                     data: {
                         "itinerary": {
                             "confirmation_code": code,
-                            "email":             "kmp@cs.unc.edu",
+                            "email":             email,
                             "info":              ticket.id
                         }
                     },
@@ -102,7 +103,6 @@ $(document).ready(function () {
                   });
               });
         });
-        
     });
 
     $('button.search-button').click(function() {
