@@ -58,13 +58,13 @@
       <!--BEGINNING OF CARD-->
       <div class=" w3-margin-bottom">
       <div class="w3-container w3-margin-top">
-        <div class="w3-container w3-black w3-opacity">
+        <div class="w3-container w3-black w3-opacity" hidden="true">
           <div class="card" id="card1" >
             <div class="flight-info">
-              <h3>RNO to RDU</h3>
-              <p class="w3-opacity">Confirmation Code: S94BV9</p>
-              <span class="depart">Depart: 1:15 PM</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="arrive">Arrive 4:50 PM</span>
-              <p class="airline">Airline: Delta</p>
+              <h3>[depart] to [arrive]</h3>
+              <p class="w3-opacity confirmation-code">Confirmation Code: [confCode]</p>
+              <span class="depart-itin w3-left">Depart: [departTime]</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="arrive-itin w3-right" style="margin-right: 300px;">Arrive: [arriveTime]</span><br>
+              <span class="airline w3-left">Airline: [airline]</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="seat w3-right" style="margin-right: 300px;">Seat: [seat]</span><br>
               <button class="w3-button w3-margin-bottom w3-red w3-right cancel-ticket">Cancel Ticket</button>
             </div>
           </div>
@@ -74,7 +74,7 @@
   <!--END OF CARD-->
 
 <!--BEGINNING OF CARD-->
-<div class=" w3-margin-bottom">
+<div class=" w3-margin-bottom" hidden="true">
 <div class="w3-container w3-margin-top">
   <div class="w3-container w3-black w3-opacity">
     <div class="card" id="card1" >
