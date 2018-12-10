@@ -16,7 +16,7 @@
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #f44336;
+  background: #239cff;
   cursor: pointer;
 }
 
@@ -24,7 +24,7 @@
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #f44336;
+  background: #239cff;
   cursor: pointer;
 }
 
@@ -98,4 +98,3 @@ div.w3-black {
 #map {
   height: 100%;
 }
-
