@@ -17,7 +17,15 @@ $(document).ready(function () {
         xhrFields: { withCredentials: true }
     });
 
-    del('itineraries');
+    // let info = {
+    //     "instance": {
+    //         "flight_id" : 142287,
+    //         "date"      : "2018-11-28",
+    //         "is_cancelled": false,
+    //     }
+    // }
+    // seed(10, "instances", info);
+    //del('itineraries');
     
     //newMap();
 
@@ -149,14 +157,12 @@ $(document).ready(function () {
             type: 'GET',
             xhrFields: { withCredentials: true }
         }).done(function(data) {
-            //console.log(data[0]);
             depID = data[0].id;
             $.ajax({
                 url: root +'/airports?filter[code]=' + arrive,
                 type: 'GET',
                 xhrFields: { withCredentials: true }
             }).done(function(data) {
-                //console.log(data[0]);
                 arrID = data[0].id;
                 $.ajax({
                     url: root + '/flights?filter[departure_id]=' +depID,
@@ -167,7 +173,7 @@ $(document).ready(function () {
                         if(data[i].arrival_id == arrID) flights.push(data[i]);
                         //flights = data;
                     }
-                    console.log(flights)
+                    console.log(flights.length)
                     for(let i = 0; i < flights.length; i++){
                         $.ajax({
                             url: root + '/instances?filter[flight_id]=' + flights[i].id,
@@ -183,9 +189,9 @@ $(document).ready(function () {
                             }
                         });
                     }
-                    console.log(instances[0].info);
+                    console.log(instances.length);
                     for(let i = 1; i <= instances.length; i++){
-                        console.log(flights[i].departs_at);
+                        //console.log(flights[i].departs_at);
                         let airline;
                         let flightcard = $('div.card#card' + i).children('div.flight-info');
                         let dep_at = flights[instances[i-1].info].departs_at;//instances[i-1].info.substring(11, 16);
@@ -212,6 +218,7 @@ $(document).ready(function () {
                         flightcard.children('span.arrive').text(`Arrives: ${arr_at.substring(11, 16)}`);
                         flightcard.children('p.airline').text(`Airline: ${airline}`);
                         flightcard.parent().show();
+                        window.scrollTo(0, 650.33);
                     }
                 });
             });
@@ -263,8 +270,33 @@ $(document).ready(function () {
         alert("firstName: "+firstName+" lastName: "+lastName+" middleName: "+middleName+" age: "+age);
     });
 
+    $('button.cancel-ticket').click(function() {
+        $(this).parent().parent().parent().hide();
+        $(this).parent().parent().parent().parent().parent().siblings('h3').text('You don\'t have any trips. Sad.');
+        $(this).parent().parent().parent().parent().parent().siblings('h3').append('<i class="fa fa-frown-o" aria-hidden="true"></i>');
+        let id = $(this).siblings('p.confirmation-code').text().substring(19,25);
+        alert(id);
+        $.ajax({
+            url: root +'/itineraries?filter[confirmation_code]=' + id,
+            type: 'GET',
+            xhrFields: { withCredentials: true }
+        }).done(function (data) {
+            alert(data);
+            id = data[0].id;
+            alert(id);
+            $.ajax({
+                url: root +'/itineraries/' + id,
+                type: 'DELETE',
+                xhrFields: { withCredentials: true }
+            }).done(function () {
+                return;
+            });
+        });
+    });
+
     function showItinerary() {
       //alert(confcodes[0]);
+      $('h3#itin').text('Your Upcoming Trips');
       for (let i = 0; i < confcodes.length; i++) {
         $.ajax({
             url: root +'/itineraries?filter[confirmation_code]=' + confcodes[i],
