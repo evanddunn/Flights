@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>TICKET</title>
+  <title>COMP 426</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="final.js"></script>
@@ -20,7 +20,7 @@
 
   <!-- Navigation Bar -->
   <div class="w3-bar w3-white w3-border-bottom w3-xlarge">
-    <a href="#" class="w3-bar-item w3-button w3-text-red w3-hover-red"><b><i class="fa fa-suitcase" aria-hidden="true"></i> COMP 426</b></a>
+    <a href="#" class="w3-bar-item w3-button w3-text-blue w3-hover-blue"><b><i class="fa fa-suitcase" aria-hidden="true"></i> COMP 426</b></a>
   </div>
 
   <!-- Header -->
@@ -39,11 +39,11 @@
         <div class="w3-row-padding" style="margin:0 -16px;">
           <div class="w3-third" id="departingInputDiv">
             <label>From</label>
-            <input class="w3-input w3-border" type="text" placeholder="Departing from" id="departingInputInput">
+            <input class="w3-input w3-border" type="text" placeholder="Departing from (ex. RNO)" maxlength="3" onkeydown="upperCaseF(this)" id="departingInputInput">
           </div>
           <div class="w3-third" id="arrivingInputDiv">
             <label>To</label>
-            <input class="w3-input w3-border" type="text" placeholder="Arriving at" id="arrivingInputInput">
+            <input class="w3-input w3-border" type="text" placeholder="Arriving at (ex. RDU)" maxlength="3" onkeydown="upperCaseF(this)" id="arrivingInputInput">
           </div>
           <div class="w3-third" id="dateInputDiv">
             <label>Date</label>
@@ -66,7 +66,7 @@
               <p class="w3-opacity confirmation-code">Confirmation Code: [confCode]</p>
               <span class="depart-itin w3-left">Depart: [departTime]</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="arrive-itin w3-right" style="margin-right: 300px;">Arrive: [arriveTime]</span><br>
               <span class="airline w3-left">Airline: [airline]</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="seat w3-right" style="margin-right: 300px;">Seat: [seat]</span><br>
-              <button class="w3-button w3-margin-bottom w3-red w3-right cancel-ticket">Cancel Ticket</button>
+              <button class="w3-button w3-margin-bottom w3-blue w3-right cancel-ticket">Cancel Ticket</button>
             </div>
           </div>
       </div>
@@ -84,7 +84,7 @@
         <p class="w3-opacity">Cost: $400</p>
         <span class="depart">Depart: 1:15 PM</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="arrive">Arrive 4:50 PM</span>
         <p class="airline">Airline: Delta</p>
-        <button class="w3-button w3-margin-bottom w3-red w3-right buy-ticket">Buy Ticket</button>
+        <button class="w3-button w3-margin-bottom w3-blue w3-right buy-ticket">Buy Ticket</button>
       </div>
     </div>
 </div>
@@ -118,7 +118,7 @@
               <p class="w3-opacity" id="cost">Cost: $400</p>
               <span class="depart">Depart: 1:15 PM</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="arrive">Arrive 4:50 PM</span>
               <p class="airline">Airline: Delta</p>
-              <button class="w3-button w3-margin-bottom w3-red w3-right buy-ticket">Buy Ticket</button>
+              <button class="w3-button w3-margin-bottom w3-blue w3-right buy-ticket">Buy Ticket</button>
             </div>
             <div id="aslInput" class="aslInputClass">
               <div class="w3-half name-input">
@@ -138,7 +138,7 @@
                   </div>
                 </p>
                 <p class="age-wrapper"><input class="w3-padding-16 age-input" type="number" placeholder="Age" required name="Age" min="0" max="130" size="30" ></p>
-                <p class="email-wrapper"><input class="w3-padding-16 email-input" type="text" placeholder="Email" required name="Email" min="0" max="130" size="30" ></p>                <button class="w3-button w3-margin-bottom w3-red w3-right reserve-ticket" style="margin-right:23px">Reserve Ticket</button>
+                <p class="email-wrapper"><input class="w3-padding-16 email-input" type="text" placeholder="Email" required name="Email" min="0" max="130" size="30" ></p>                <button class="w3-button w3-margin-bottom w3-blue w3-right reserve-ticket" style="margin-right:23px">Reserve Ticket</button>
               </div>
             </div>
           </div>
@@ -155,7 +155,7 @@
               <p class="w3-opacity" id="cost">Cost: $400</p>
               <span class="depart">Depart: 1:15 PM</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="arrive">Arrive 4:50 PM</span>
               <p class="airline">Airline: Delta</p>
-              <button class="w3-button w3-margin-bottom w3-red w3-right buy-ticket">Buy Ticket</button>
+              <button class="w3-button w3-margin-bottom w3-blue w3-right buy-ticket">Buy Ticket</button>
             </div>
             <div id="aslInput" class="aslInputClass">
               <div class="w3-half name-input">
@@ -175,7 +175,7 @@
                   </div>
                 </p>
                 <p class="age-wrapper"><input class="w3-padding-16 age-input" type="number" placeholder="Age" required name="Age" min="0" max="130" size="30" ></p>
-                <p class="email-wrapper"><input class="w3-padding-16 email-input" type="text" placeholder="Email" required name="Email" min="0" max="130" size="30" ></p>                <button class="w3-button w3-margin-bottom w3-red w3-right reserve-ticket" style="margin-right:23px">Reserve Ticket</button>
+                <p class="email-wrapper"><input class="w3-padding-16 email-input" type="text" placeholder="Email" required name="Email" min="0" max="130" size="30" ></p>                <button class="w3-button w3-margin-bottom w3-blue w3-right reserve-ticket" style="margin-right:23px">Reserve Ticket</button>
               </div>
             </div>
           </div>
@@ -183,6 +183,8 @@
       </div>
     </div>
   </div>
+
+
   <div class="w3-row-padding">
       <div class="w3-half w3-margin-bottom">
         <div class="w3-container w3-margin-top">
@@ -193,7 +195,7 @@
                 <p class="w3-opacity" id="cost">Cost: $400</p>
                 <span class="depart">Depart: 1:15 PM</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="arrive">Arrive 4:50 PM</span>
                 <p class="airline">Airline: Delta</p>
-                <button class="w3-button w3-margin-bottom w3-red w3-right buy-ticket">Buy Ticket</button>
+                <button class="w3-button w3-margin-bottom w3-blue w3-right buy-ticket">Buy Ticket</button>
               </div>
               <div id="aslInput" class="aslInputClass">
                 <div class="w3-half name-input">
@@ -213,14 +215,14 @@
                     </div>
                   </p>
                   <p class="age-wrapper"><input class="w3-padding-16 age-input" type="number" placeholder="Age" required name="Age" min="0" max="130" size="30" ></p>
-                  <p class="email-wrapper"><input class="w3-padding-16 email-input" type="text" placeholder="Email" required name="Email" min="0" max="130" size="30" ></p>                <button class="w3-button w3-margin-bottom w3-red w3-right reserve-ticket" style="margin-right:23px">Reserve Ticket</button>
+                  <p class="email-wrapper"><input class="w3-padding-16 email-input" type="text" placeholder="Email" required name="Email" min="0" max="130" size="30" ></p>                <button class="w3-button w3-margin-bottom w3-blue w3-right reserve-ticket" style="margin-right:23px">Reserve Ticket</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-  
+
       <div class="w3-half w3-margin-bottom">
         <div class="w3-container w3-margin-top">
           <div class="w3-container w3-black w3-opacity">
@@ -230,7 +232,7 @@
                 <p class="w3-opacity" id="cost">Cost: $400</p>
                 <span class="depart">Depart: 1:15 PM</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="arrive">Arrive 4:50 PM</span>
                 <p class="airline">Airline: Delta</p>
-                <button class="w3-button w3-margin-bottom w3-red w3-right buy-ticket">Buy Ticket</button>
+                <button class="w3-button w3-margin-bottom w3-blue w3-right buy-ticket">Buy Ticket</button>
               </div>
               <div id="aslInput" class="aslInputClass">
                 <div class="w3-half name-input">
@@ -250,7 +252,7 @@
                     </div>
                   </p>
                   <p class="age-wrapper"><input class="w3-padding-16 age-input" type="number" placeholder="Age" required name="Age" min="0" max="130" size="30" ></p>
-                  <p class="email-wrapper"><input class="w3-padding-16 email-input" type="text" placeholder="Email" required name="Email" min="0" max="130" size="30" ></p>                <button class="w3-button w3-margin-bottom w3-red w3-right reserve-ticket" style="margin-right:23px">Reserve Ticket</button>
+                  <p class="email-wrapper"><input class="w3-padding-16 email-input" type="text" placeholder="Email" required name="Email" min="0" max="130" size="30" ></p>                <button class="w3-button w3-margin-bottom w3-blue w3-right reserve-ticket" style="margin-right:23px">Reserve Ticket</button>
                 </div>
               </div>
             </div>
@@ -268,7 +270,7 @@
                 <p class="w3-opacity" id="cost">Cost: $400</p>
                 <span class="depart">Depart: 1:15 PM</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="arrive">Arrive 4:50 PM</span>
                 <p class="airline">Airline: Delta</p>
-                <button class="w3-button w3-margin-bottom w3-red w3-right buy-ticket">Buy Ticket</button>
+                <button class="w3-button w3-margin-bottom w3-blue w3-right buy-ticket">Buy Ticket</button>
               </div>
               <div id="aslInput" class="aslInputClass">
                 <div class="w3-half name-input">
@@ -288,14 +290,14 @@
                     </div>
                   </p>
                   <p class="age-wrapper"><input class="w3-padding-16 age-input" type="number" placeholder="Age" required name="Age" min="0" max="130" size="30" ></p>
-                  <p class="email-wrapper"><input class="w3-padding-16 email-input" type="text" placeholder="Email" required name="Email" min="0" max="130" size="30" ></p>                <button class="w3-button w3-margin-bottom w3-red w3-right reserve-ticket" style="margin-right:23px">Reserve Ticket</button>
+                  <p class="email-wrapper"><input class="w3-padding-16 email-input" type="text" placeholder="Email" required name="Email" min="0" max="130" size="30" ></p>                <button class="w3-button w3-margin-bottom w3-blue w3-right reserve-ticket" style="margin-right:23px">Reserve Ticket</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-  
+
       <div class="w3-half w3-margin-bottom">
         <div class="w3-container w3-margin-top">
           <div class="w3-container w3-black w3-opacity">
@@ -305,7 +307,7 @@
                 <p class="w3-opacity" id="cost">Cost: $400</p>
                 <span class="depart">Depart: 1:15 PM</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="arrive">Arrive 4:50 PM</span>
                 <p class="airline">Airline: Delta</p>
-                <button class="w3-button w3-margin-bottom w3-red w3-right buy-ticket">Buy Ticket</button>
+                <button class="w3-button w3-margin-bottom w3-blue w3-right buy-ticket">Buy Ticket</button>
               </div>
               <div id="aslInput" class="aslInputClass">
                 <div class="w3-half name-input">
@@ -325,7 +327,7 @@
                     </div>
                   </p>
                   <p class="age-wrapper"><input class="w3-padding-16 age-input" type="number" placeholder="Age" required name="Age" min="0" max="130" size="30" ></p>
-                  <p class="email-wrapper"><input class="w3-padding-16 email-input" type="text" placeholder="Email" required name="Email" min="0" max="130" size="30" ></p>                <button class="w3-button w3-margin-bottom w3-red w3-right reserve-ticket" style="margin-right:23px">Reserve Ticket</button>
+                  <p class="email-wrapper"><input class="w3-padding-16 email-input" type="text" placeholder="Email" required name="Email" min="0" max="130" size="30" ></p>                <button class="w3-button w3-margin-bottom w3-blue w3-right reserve-ticket" style="margin-right:23px">Reserve Ticket</button>
                 </div>
               </div>
             </div>
@@ -343,7 +345,7 @@
                 <p class="w3-opacity" id="cost">Cost: $400</p>
                 <span class="depart">Depart: 1:15 PM</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="arrive">Arrive 4:50 PM</span>
                 <p class="airline">Airline: Delta</p>
-                <button class="w3-button w3-margin-bottom w3-red w3-right buy-ticket">Buy Ticket</button>
+                <button class="w3-button w3-margin-bottom w3-blue w3-right buy-ticket">Buy Ticket</button>
               </div>
               <div id="aslInput" class="aslInputClass">
                 <div class="w3-half name-input">
@@ -363,14 +365,14 @@
                     </div>
                   </p>
                   <p class="age-wrapper"><input class="w3-padding-16 age-input" type="number" placeholder="Age" required name="Age" min="0" max="130" size="30" ></p>
-                  <p class="email-wrapper"><input class="w3-padding-16 email-input" type="text" placeholder="Email" required name="Email" min="0" max="130" size="30" ></p>                <button class="w3-button w3-margin-bottom w3-red w3-right reserve-ticket" style="margin-right:23px">Reserve Ticket</button>
+                  <p class="email-wrapper"><input class="w3-padding-16 email-input" type="text" placeholder="Email" required name="Email" min="0" max="130" size="30" ></p>                <button class="w3-button w3-margin-bottom w3-blue w3-right reserve-ticket" style="margin-right:23px">Reserve Ticket</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-  
+
       <div class="w3-half w3-margin-bottom">
         <div class="w3-container w3-margin-top">
           <div class="w3-container w3-black w3-opacity">
@@ -380,7 +382,7 @@
                 <p class="w3-opacity" id="cost">Cost: $400</p>
                 <span class="depart">Depart: 1:15 PM</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="arrive">Arrive 4:50 PM</span>
                 <p class="airline">Airline: Delta</p>
-                <button class="w3-button w3-margin-bottom w3-red w3-right buy-ticket">Buy Ticket</button>
+                <button class="w3-button w3-margin-bottom w3-blue w3-right buy-ticket">Buy Ticket</button>
               </div>
               <div id="aslInput" class="aslInputClass">
                 <div class="w3-half name-input">
@@ -400,7 +402,7 @@
                     </div>
                   </p>
                   <p class="age-wrapper"><input class="w3-padding-16 age-input" type="number" placeholder="Age" required name="Age" min="0" max="130" size="30" ></p>
-                  <p class="email-wrapper"><input class="w3-padding-16 email-input" type="text" placeholder="Email" required name="Email" min="0" max="130" size="30" ></p>                <button class="w3-button w3-margin-bottom w3-red w3-right reserve-ticket" style="margin-right:23px">Reserve Ticket</button>
+                  <p class="email-wrapper"><input class="w3-padding-16 email-input" type="text" placeholder="Email" required name="Email" min="0" max="130" size="30" ></p>                <button class="w3-button w3-margin-bottom w3-blue w3-right reserve-ticket" style="margin-right:23px">Reserve Ticket</button>
                 </div>
               </div>
             </div>
@@ -418,7 +420,7 @@
                 <p class="w3-opacity" id="cost">Cost: $400</p>
                 <span class="depart">Depart: 1:15 PM</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="arrive">Arrive 4:50 PM</span>
                 <p class="airline">Airline: Delta</p>
-                <button class="w3-button w3-margin-bottom w3-red w3-right buy-ticket">Buy Ticket</button>
+                <button class="w3-button w3-margin-bottom w3-blue w3-right buy-ticket">Buy Ticket</button>
               </div>
               <div id="aslInput" class="aslInputClass">
                 <div class="w3-half name-input">
@@ -438,14 +440,14 @@
                     </div>
                   </p>
                   <p class="age-wrapper"><input class="w3-padding-16 age-input" type="number" placeholder="Age" required name="Age" min="0" max="130" size="30" ></p>
-                  <p class="email-wrapper"><input class="w3-padding-16 email-input" type="text" placeholder="Email" required name="Email" min="0" max="130" size="30" ></p>                <button class="w3-button w3-margin-bottom w3-red w3-right reserve-ticket" style="margin-right:23px">Reserve Ticket</button>
+                  <p class="email-wrapper"><input class="w3-padding-16 email-input" type="text" placeholder="Email" required name="Email" min="0" max="130" size="30" ></p>                <button class="w3-button w3-margin-bottom w3-blue w3-right reserve-ticket" style="margin-right:23px">Reserve Ticket</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-  
+
       <div class="w3-half w3-margin-bottom">
         <div class="w3-container w3-margin-top">
           <div class="w3-container w3-black w3-opacity">
@@ -455,7 +457,7 @@
                 <p class="w3-opacity" id="cost">Cost: $400</p>
                 <span class="depart">Depart: 1:15 PM</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="arrive">Arrive 4:50 PM</span>
                 <p class="airline">Airline: Delta</p>
-                <button class="w3-button w3-margin-bottom w3-red w3-right buy-ticket">Buy Ticket</button>
+                <button class="w3-button w3-margin-bottom w3-blue w3-right buy-ticket">Buy Ticket</button>
               </div>
               <div id="aslInput" class="aslInputClass">
                 <div class="w3-half name-input">
@@ -475,7 +477,7 @@
                     </div>
                   </p>
                   <p class="age-wrapper"><input class="w3-padding-16 age-input" type="number" placeholder="Age" required name="Age" min="0" max="130" size="30" ></p>
-                  <p class="email-wrapper"><input class="w3-padding-16 email-input" type="text" placeholder="Email" required name="Email" min="0" max="130" size="30" ></p>                <button class="w3-button w3-margin-bottom w3-red w3-right reserve-ticket" style="margin-right:23px">Reserve Ticket</button>
+                  <p class="email-wrapper"><input class="w3-padding-16 email-input" type="text" placeholder="Email" required name="Email" min="0" max="130" size="30" ></p>                <button class="w3-button w3-margin-bottom w3-blue w3-right reserve-ticket" style="margin-right:23px">Reserve Ticket</button>
                 </div>
               </div>
             </div>
@@ -483,9 +485,9 @@
         </div>
       </div>
   </div>
-  
-  
-  
+
+
+
 
   <div class="w3-row-padding">
     <div class="w3-half w3-margin-bottom">
@@ -510,7 +512,7 @@
   <!-- Footer -->
   <footer class="w3-container w3-center w3-opacity w3-margin-bottom">
 
-    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+    <p>Poweblue by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
   </footer>
 
   <script>
@@ -524,10 +526,10 @@
     }
     tablinks = document.getElementsByClassName("tablink");
     for (i = 0; i < x.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+      tablinks[i].className = tablinks[i].className.replace(" w3-blue", "");
     }
     document.getElementById(linkName).style.display = "block";
-    evt.currentTarget.className += " w3-red";
+    evt.currentTarget.className += " w3-blue";
   }
   // Click on the first tablink on load
   document.getElementsByClassName("tablink")[0].click();
@@ -548,10 +550,10 @@
     }
     tablinks = document.getElementsByClassName("tablink");
     for (i = 0; i < x.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+      tablinks[i].className = tablinks[i].className.replace(" w3-blue", "");
     }
     document.getElementById(linkName).style.display = "block";
-    evt.currentTarget.className += " w3-red";
+    evt.currentTarget.className += " w3-blue";
   }
   // Click on the first tablink on load
   document.getElementsByClassName("tablink")[0].click();
