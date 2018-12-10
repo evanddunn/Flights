@@ -1,4 +1,5 @@
 let root = "http://comp426.cs.unc.edu:3001";
+const LATLONG = 0.01449275362;
 $(document).ready(function () {
     let body = $('body');
     
@@ -16,6 +17,7 @@ $(document).ready(function () {
         },
         xhrFields: { withCredentials: true }
     });
+    
 
     // let info = {
     //     "instance": {
@@ -152,6 +154,8 @@ $(document).ready(function () {
         let depID, arrID;
         let flights = new Array();
         let instances = new Array();
+        window.scrollTo(0, 650.33);
+        $('div.w3-container.w3-black.w3-opacity.slide').show();
         $.ajax({
             url: root +'/airports?filter[code]=' + depart,
             type: 'GET',
@@ -218,7 +222,6 @@ $(document).ready(function () {
                         flightcard.children('span.arrive').text(`Arrives: ${arr_at.substring(11, 16)}`);
                         flightcard.children('p.airline').text(`Airline: ${airline}`);
                         flightcard.parent().show();
-                        window.scrollTo(0, 650.33);
                     }
                 });
             });
@@ -292,6 +295,38 @@ $(document).ready(function () {
                 return;
             });
         });
+    });
+
+    $('input.slider').mouseup(function () {
+        let dist = $('input.slider').val();
+        let region = LATLONG * dist;
+        let nearby = new Array();
+        //let depart = $('#departingInputInput').val().toUpperCase();
+        let arrive = $('#arrivingInputInput').val().toUpperCase();
+        let lat, long;
+        $.ajax({
+            url: root +'/airports?filter[code]=' +arrive,
+            type: 'GET',
+            xhrFields: { withCredentials: true }
+        }).done(function (data) {
+            lat = data[0].latitude;
+            long = data[0].longitude;
+            $.ajax({
+                url: root +'/airports',
+                type: 'GET',
+                xhrFields: { withCredentials: true }
+            }).done(function (data) {
+                for (let i = 0; i < data.length; i++) {
+                    if(data[i].latitude < (lat + region))
+                        if(data[i].latitude > (lat - region))
+                            if(data[i].longitude > (long + region))
+                                if(data[i].longitude > (long - region))
+                                    nearby.push(data[i]);
+                }
+                console.log(nearby);
+            });
+        });
+
     });
 
     function showItinerary() {
