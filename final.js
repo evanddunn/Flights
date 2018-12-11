@@ -367,7 +367,7 @@ $(document).ready(function () {
           //alert("code: "+confcodes[i]);
           //alert(data[0].info);
           let info = JSON.parse(data[0].info);
-          let card = $('div.flight-info');
+          let card = $('div.flight-info-itin');
           card.parent().parent().show();
           card.children('h3').text(info.depart + " to " + info.arrive);
           card.children('p.confirmation-code').text('Confirmation Code: '+info.confirmation_code);
@@ -378,6 +378,13 @@ $(document).ready(function () {
         })
       }
     }
+
+  $('button.flight-button').click(function() {
+    $('div.master-flight-cards').show();
+  })
+  $('button.hotel-button').click(function() {
+    $('div.master-flight-cards').hide();
+  })
 
 })
 

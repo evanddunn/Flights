@@ -28,8 +28,8 @@
     <img class="w3-image" src="https://dl2.pushbulletusercontent.com/HUZcvosJGbd769WUlak5EpvziR08PtT6/for_travelers_ec.jpg" alt="San Diego" width="1500" height="700">
     <div class="w3-display-middle" style="width:65%">
       <div class="w3-bar w3-black">
-        <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Flight');"><i class="fa fa-plane w3-margin-right"></i>Flights</button>
-        <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Hotel');"><i class="fa fa-ticket w3-margin-right"></i>Iteneraries</button>
+        <button class="w3-bar-item w3-button tablink flight-button" onclick="openLink(event, 'Flight');"><i class="fa fa-plane w3-margin-right"></i>Flights</button>
+        <button class="w3-bar-item w3-button tablink hotel-button" onclick="openLink(event, 'Hotel');"><i class="fa fa-ticket w3-margin-right"></i>Itineraries</button>
       </div>
 
       <!-- Tabs -->
@@ -59,8 +59,8 @@
         <div class=" w3-margin-bottom">
           <div class="w3-container w3-margin-top">
             <div class="w3-container w3-black w3-opacity" hidden="true">
-              <div class="card" id="card1" >
-                <div class="flight-info">
+              <div class="card" id="itincard1" >
+                <div class="flight-info-itin">
                   <h3>[depart] to [arrive]</h3>
                   <p class="w3-opacity confirmation-code">Confirmation Code: [confCode]</p>
                   <span class="depart-itin w3-left">Depart: [departTime]</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="arrive-itin w3-right" style="margin-right: 300px;">Arrive: [arriveTime]</span><br>
@@ -72,25 +72,6 @@
           </div>
         </div>
         <!--END OF CARD-->
-
-        <!--BEGINNING OF CARD-->
-        <div class=" w3-margin-bottom" hidden="true">
-          <div class="w3-container w3-margin-top">
-            <div class="w3-container w3-black w3-opacity">
-              <div class="card" id="card1" >
-                <div class="flight-info">
-                  <h3>RNO to RDU</h3>
-                  <p class="w3-opacity">Cost: $400</p>
-                  <span class="depart">Depart: 1:15 PM</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="arrive">Arrive 4:50 PM</span>
-                  <p class="airline">Airline: Delta</p>
-                  <button class="w3-button w3-margin-bottom w3-blue w3-right buy-ticket">Buy Ticket</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--END OF CARD-->
-
       </div>
 
       <!-- <div>
@@ -493,10 +474,6 @@
     </div>
   </div>
 </div>
-
-
-
-
 <div class="w3-row-padding">
   <div class="w3-margin">
     <div class="w3-container w3-margin-top">
@@ -514,7 +491,6 @@
     </div>
   </div>
 </div>
-
 <div class="w3-row-padding">
   <div class="w3-half w3-margin-bottom">
     <div class="w3-container w3-margin-top">
@@ -594,7 +570,6 @@
     </div>
   </div>
 </div>
-
 <div class="w3-row-padding">
   <div class="w3-half w3-margin-bottom">
     <div class="w3-container w3-margin-top">
@@ -674,7 +649,6 @@
     </div>
   </div>
 </div>
-
 <div class="w3-row-padding">
   <div class="w3-half w3-margin-bottom">
     <div class="w3-container w3-margin-top">
