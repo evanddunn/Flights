@@ -146,6 +146,9 @@ $(document).ready(function () {
         let instances = new Array();
         window.scrollTo(0, 650.33);
         $('div.w3-container.w3-black.w3-opacity.slide').show();
+        for (let i = 1; i <= 10; i++) {
+          $('#dcard'+i).parent().hide();
+        }
         $.ajax({
             url: root +'/airports?filter[code]=' + depart,
             type: 'GET',
@@ -212,6 +215,12 @@ $(document).ready(function () {
                         flightcard.children('span.arrive').text(`Arrives: ${arr_at.substring(11, 16)}`);
                         flightcard.children('p.airline').text(`Airline: ${airline}`);
                         flightcard.parent().parent().show();
+                    }
+                    if (instances.length < 10) {
+                      for (let i = instances.length+1; i <= 10; i++) {
+                        let flightcard = $('div.card#card' + i).children('div.flight-info');
+                        flightcard.parent().parent().hide();
+                      }
                     }
                 });
             });
