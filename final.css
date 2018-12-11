@@ -98,3 +98,9 @@ div.w3-black {
 #map {
   height: 100%;
 }
+
+button.kmp {
+  background: none;
+  border: none;
+  margin: none;
+}
