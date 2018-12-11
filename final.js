@@ -308,10 +308,21 @@ $(document).ready(function () {
         let dist = $('input.slider').val();
         let region = LATLONG * dist;
         let nearby = new Array();
-        //let depart = $('#departingInputInput').val().toUpperCase();
+        let flights = new Array();
+        let dir = new Array();
+        let instances = new Array();
+        //let flights = new Array();
+        let depart = $('#departingInputInput').val().toUpperCase();
         let arrive = $('#arrivingInputInput').val().toUpperCase();
+        let date = $('#dateInputInput').val();
         let lat, long;
+        let depID;
         console.log(`dist: ${dist} region: ${region}`);
+        $.ajax({
+            url: root +'/airports?filter[code]=' +depart,
+            type: 'GET',
+            xhrFields: { withCredentials: true }
+        }).done(function (data) {depID = data[0].id});
         $.ajax({
             url: root +'/airports?filter[code]=' +arrive,
             type: 'GET',
@@ -339,7 +350,6 @@ $(document).ready(function () {
                                 if(data[i].latitude >= bot)
                                     nearby.push(data[i]);
                 }
-                console.log(nearby);
                 for(let i = 0 ; i < nearby.length; i++) {
                     if(nearby[i].code != arrive) {
                         $.ajax({
@@ -350,21 +360,91 @@ $(document).ready(function () {
                             xhrFields: { withCredentials: true }
                         }).done(function (data) {
                             //console.log(data.routes[0].legs[0].distance.text);
-                            if ((data.routes[0].legs[0].distance.text) <= dist) {
-                                alert('swag');
-                                $('div.slide').show();
-                                for (let i = 1; i <= nearby.length; i++) {
-                                    $('#dcard'+i).parent().show();
-                                  }
-                                  if (nearby.length < 6) {
-                                    for (let i = nearby.length+1; i <= 6; i++) {
-                                      $('#dcard'+i).parent().hide();
-                                    }
-                                }
+                            if ((data.routes[0].legs[0].distance.text) > dist) { 
+                                nearby.splice(i, i)
+                                dir.push();
+                                // for (let i = 1; i <= nearby.length; i++) {
+                                //     $('#dcard'+i).parent().show();
+                                //   }
+                                //   if (nearby.length < 6) {
+                                //     for (let i = nearby.length+1; i <= 6; i++) {
+                                //       $('#dcard'+i).parent().hide();
+                                //     }
+                                // }
                             }
                         });
+                    } else {
+                        nearby.splice(i,i);
                     }
                 }
+                console.log(nearby);
+                //for(let j = 0; j < nearby.length; j++) {
+                    $.ajax({
+                        url: root+ '/flights?filter[departure_id]=' + depID,
+                        type: 'GET',
+                        dataType: 'json',
+                        //async: false,
+                        xhrFields: { withCredentials: true }
+                    }).done(function (data) {
+                        for(let j = 0; j < nearby.length; j++){
+                            for(let k = 0; k < data.length; k++) {
+                                if(data[k].arrival_id == nearby[j].id)
+                                    flights.push(data[k]);
+                            }
+                        }
+                        console.log(flights);
+                        for(let c = 0; c < flights.length; c++){
+                            $.ajax({
+                                url: root+ '/instances?filter[flight_id]=' + flights[c].id,
+                                type: 'GET',
+                                dataType: 'json',
+                                async: false,
+                                xhrFields: { withCredentials: true }
+                            }).done(function (data) {
+                                for(let l = 0; l < data.length; l++) {
+                                    if(data[l].date == date){
+                                        data[l].info = c;
+                                        instances.push(data[l])
+                                    }
+                                }
+                            });
+                        }
+                        console.log(instances);
+                        for (let i = 1; i <= instances.length; i++) {
+                            let airline;
+                            let flightcard = $('#dcard' + i).children('div.flight-info');
+                            let dep_at = flights[instances[i-1].info].departs_at;//instances[i-1].info.substring(11, 16);
+                            let arr_at = flights[instances[i-1].info].arrives_at;
+                            let airline_id = flights[instances[i-1].info].airline_id;
+                            $.ajax({
+                                url: root + '/airlines/' + airline_id,
+                                type: 'GET',
+                                xhrFields: { withCredentials: true },
+                                async: false
+                            }).done(function (data) {
+                                airline = data.name;
+                            });
+                            arrive = flights[instances[i-1].info].arrival_id;
+                            for(let n = 0; n < nearby.length; n++) {
+                                if(nearby[n].id == arrive)
+                                    arrive = nearby[n].code;
+                            }
+                            flightcard.data('cost', cost);
+                            flightcard.data('instance', instances[i-1].id);
+                            flightcard.data('planeID', flights[instances[i-1].info].plane_id);
+                            flightcard.data('airline', airline);
+                            flightcard.data('depart', depart);
+                            flightcard.data('arrive', arrive);
+                            flightcard.children('h3').text(`${depart} to ${arrive}`);
+                            flightcard.children('#cost').text('Cost: $' + cost);
+                            flightcard.children('span.depart').text(`Departs: ${dep_at.substring(11, 16)}`);
+                            flightcard.children('span.arrive').text(`Arrives: ${arr_at.substring(11, 16)}`);
+                            flightcard.children('p.airline').text(`Airline: ${airline}`);
+                            flightcard.parent().parent().show();
+
+                        }
+                    });
+                //}
             });
         });
     });
