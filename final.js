@@ -381,7 +381,7 @@ $(document).ready(function () {
           //alert("code: "+confcodes[i]);
           //alert(data[0].info);
           let info = JSON.parse(data[0].info);
-          let card = $('div.flight-info');
+          let card = $('div.flight-info-itin');
           card.parent().parent().show();
           card.children('h3').text(info.depart + " to " + info.arrive);
           card.children('p.confirmation-code').text('Confirmation Code: '+info.confirmation_code);
@@ -392,6 +392,25 @@ $(document).ready(function () {
         })
       }
     }
+
+  $('button.flight-button').click(function() {
+    $('div.master-flight-cards').show();
+    $('div.background-image').empty();
+    $('div.background-image').append('<img class="w3-image " src="https://dl2.pushbulletusercontent.com/HUZcvosJGbd769WUlak5EpvziR08PtT6/for_travelers_ec.jpg" alt="plane" width="1500" height="700">');
+  })
+  $('button.hotel-button').click(function() {
+    $('div.master-flight-cards').hide();
+    $('div.background-image').empty();
+    $('div.background-image').append('<img class="w3-image " src="http://www.premiertravel.co.ke/images/packages/austria/70x70/3.jpg" alt="mountain" width="1500" height="700">');
+  })
+
+  $('button.kmp').click(function() {
+     $('body').css( 'cursor', 'url(kmp.png), default');
+     $('p').css( 'cursor', 'url(kmp.png), default');
+     $('input').css( 'cursor', 'url(kmp.png), default');
+     $('button').css( 'cursor', 'url(kmp.png), default');
+     $('slider').css( 'cursor', 'url(kmp.png), default');
+  });
 
 })
 
