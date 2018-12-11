@@ -381,9 +381,13 @@ $(document).ready(function () {
 
   $('button.flight-button').click(function() {
     $('div.master-flight-cards').show();
+]    $('div.background-image').empty();
+    $('div.background-image').append('<img class="w3-image " src="https://dl2.pushbulletusercontent.com/HUZcvosJGbd769WUlak5EpvziR08PtT6/for_travelers_ec.jpg" alt="plane" width="1500" height="700">');
   })
   $('button.hotel-button').click(function() {
     $('div.master-flight-cards').hide();
+]    $('div.background-image').empty();
+    $('div.background-image').append('<img class="w3-image " src="http://www.premiertravel.co.ke/images/packages/austria/70x70/3.jpg" alt="mountain" width="1500" height="700">');
   })
 
 })
