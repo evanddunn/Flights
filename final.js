@@ -202,7 +202,7 @@ $(document).ready(function () {
                           $('#row4').show();
                         } else if (i == 9) {
                           $('#row5').show();
-                        } 
+                        }
 
                         let airline;
                         let flightcard = $('div.card#card' + i).children('div.flight-info');
@@ -235,6 +235,15 @@ $(document).ready(function () {
                       for (let i = instances.length+1; i <= 10; i++) {
                         let flightcard = $('div.card#card' + i).children('div.flight-info');
                         flightcard.parent().parent().hide();
+                        if (i == 3) {
+                          $('#row2').hide();
+                        } else if (i == 5) {
+                          $('#row3').hide();
+                        } else if (i == 7) {
+                          $('#row4').hide();
+                        } else if (i == 9) {
+                          $('#row5').hide();
+                        }
                       }
                     }
                 });
