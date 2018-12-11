@@ -17,7 +17,7 @@ $(document).ready(function () {
         },
         xhrFields: { withCredentials: true }
     });
-    
+
 
     // let info = {
     //     "instance": {
@@ -333,6 +333,10 @@ $(document).ready(function () {
                 //         });
                 //     }
                 // }
+                for (let i = 1; i < nearby.length+1; i++) {
+                  alert('yo');
+                  $('#dcard'+i).parent().show();
+                }
             });
         });
 
