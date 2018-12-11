@@ -395,6 +395,7 @@ $(document).ready(function () {
      $('p').css( 'cursor', 'url(kmp.png), default');
      $('input').css( 'cursor', 'url(kmp.png), default');
      $('button').css( 'cursor', 'url(kmp.png), default');
+     $('slider').css( 'cursor', 'url(kmp.png), default');
   });
 
 })
