@@ -28,16 +28,6 @@ $(document).ready(function () {
     // }
     // seed(10, "instances", info);
     //del('itineraries');
-    
-    //newMap();
-
-    // var map;
-    // function newMap() {
-    //     map = new google.maps.Map(document.getElementById('map'), {
-    //         center: {lat: -34.397, lng: 150.644},
-    //         zoom: 8
-    //       });  
-    // }
 
     $('div.aslInputClass').hide();
 
@@ -304,6 +294,7 @@ $(document).ready(function () {
         //let depart = $('#departingInputInput').val().toUpperCase();
         let arrive = $('#arrivingInputInput').val().toUpperCase();
         let lat, long;
+        console.log(`dist: ${dist} region: ${region}`);
         $.ajax({
             url: root +'/airports?filter[code]=' +arrive,
             type: 'GET',
@@ -311,19 +302,37 @@ $(document).ready(function () {
         }).done(function (data) {
             lat = data[0].latitude;
             long = data[0].longitude;
+            console.log(`lat: ${lat} long: ${long}`)
             $.ajax({
                 url: root +'/airports',
                 type: 'GET',
+                //dataType: 'json',
                 xhrFields: { withCredentials: true }
             }).done(function (data) {
                 for (let i = 0; i < data.length; i++) {
-                    if(data[i].latitude < (lat + region))
+                    if(data[i].latitude <  (lat + region))
                         if(data[i].latitude > (lat - region))
-                            if(data[i].longitude > (long + region))
+                            if(data[i].longitude < (long + region))
                                 if(data[i].longitude > (long - region))
                                     nearby.push(data[i]);
                 }
                 console.log(nearby);
+                for(let i = 0 ; i < nearby.length; i++) {
+                    if(nearby[i].code != arrive) {
+                        $.ajax({
+                            url: `https://maps.googleapis.com/maps/api/directions/json?origin=${arrive}airport&destination=${nearby[i].code}airport&key=AIzaSyCtuDkDa97phIHjcGHt0HjAlMtdiigKhGc`,
+                            type: 'GET',
+                            dataType: 'json',
+                            //async: false,
+                            xhrFields: { withCredentials: true }
+                        }).done(function (data) {
+                            //console.log(data.routes[0].legs[0].distance.text);
+                            if ((data.routes[0].legs[0].distance.text) <= dist) {
+                                alert(data.routes[0].legs[0].steps[0].html_instructions);
+                            }
+                        });
+                    }
+                }
             });
         });
 
