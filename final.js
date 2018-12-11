@@ -30,6 +30,7 @@ $(document).ready(function () {
     //del('itineraries');
 
     $('div.aslInputClass').hide();
+    $('div.master-flight-cards').hide();
 
     $('button.buy-ticket').click(function(){
       $(this).parent().siblings('div.aslInputClass').show();
@@ -137,6 +138,7 @@ $(document).ready(function () {
     });
 
     $('button.search-button').click(function() {
+        $('div.master-flight-cards').show();
         $('h2').show();
         let depart = $('#departingInputInput').val().toUpperCase();
         let arrive = $('#arrivingInputInput').val().toUpperCase();
@@ -189,6 +191,19 @@ $(document).ready(function () {
                     console.log(instances.length);
                     for(let i = 1; i <= instances.length; i++){
                         //console.log(flights[i].departs_at);
+
+                        if (i == 1) {
+                          $('#row1').show();
+                        } else if (i == 3) {
+                          $('#row2').show();
+                        } else if (i == 5) {
+                          $('#row3').show();
+                        } else if (i == 7) {
+                          $('#row4').show();
+                        } else if (i == 9) {
+                          $('#row5').show();
+                        } 
+
                         let airline;
                         let flightcard = $('div.card#card' + i).children('div.flight-info');
                         let dep_at = flights[instances[i-1].info].departs_at;//instances[i-1].info.substring(11, 16);
@@ -396,6 +411,8 @@ $(document).ready(function () {
      $('input').css( 'cursor', 'url(kmp.png), default');
      $('button').css( 'cursor', 'url(kmp.png), default');
      $('slider').css( 'cursor', 'url(kmp.png), default');
+     $('b').css( 'cursor', 'url(kmp.png), default');
+     $('a').css( 'cursor', 'url(kmp.png), default');
   });
 
 })
