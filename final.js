@@ -151,12 +151,20 @@ $(document).ready(function () {
             type: 'GET',
             xhrFields: { withCredentials: true }
         }).done(function(data) {
+            if(data[0] == undefined) {
+                alert('Please enter a valid Departure Code');
+                return;
+            }
             depID = data[0].id;
             $.ajax({
                 url: root +'/airports?filter[code]=' + arrive,
                 type: 'GET',
                 xhrFields: { withCredentials: true }
             }).done(function(data) {
+                if(data[0] == undefined) {
+                    alert('Please enter a valid Arrival Code');
+                    return;
+                }
                 arrID = data[0].id;
                 $.ajax({
                     url: root + '/flights?filter[departure_id]=' +depID,
@@ -167,7 +175,7 @@ $(document).ready(function () {
                         if(data[i].arrival_id == arrID) flights.push(data[i]);
                         //flights = data;
                     }
-                    console.log(flights.length)
+                    //console.log(flights.length)
                     for(let i = 0; i < flights.length; i++){
                         $.ajax({
                             url: root + '/instances?filter[flight_id]=' + flights[i].id,
@@ -300,9 +308,15 @@ $(document).ready(function () {
             type: 'GET',
             xhrFields: { withCredentials: true }
         }).done(function (data) {
-            lat = data[0].latitude;
-            long = data[0].longitude;
-            console.log(`lat: ${lat} long: ${long}`)
+            lat = parseFloat(data[0].latitude);
+            long = parseFloat(data[0].longitude);
+            left = (long - region);
+            right = (long + region);
+            topp = (lat + region);
+            bot = (lat - region);
+            console.log(`lat: ${lat} long: ${long}`);
+            console.log(`left: ${left} right: ${right}`);
+            console.log(`top: ${topp} bot: ${bot}`);
             $.ajax({
                 url: root +'/airports',
                 type: 'GET',
@@ -310,29 +324,30 @@ $(document).ready(function () {
                 xhrFields: { withCredentials: true }
             }).done(function (data) {
                 for (let i = 0; i < data.length; i++) {
-                    if(data[i].latitude <  (lat + region))
-                        if(data[i].latitude > (lat - region))
-                            if(data[i].longitude < (long + region))
-                                if(data[i].longitude > (long - region))
+                    if(data[i].longitude >=  left)
+                        if(data[i].longitude <= right)
+                            if(data[i].latitude <= topp)
+                                if(data[i].latitude >= bot)
                                     nearby.push(data[i]);
                 }
                 console.log(nearby);
-                // for(let i = 0 ; i < nearby.length; i++) {
-                //     if(nearby[i].code != arrive) {
-                //         $.ajax({
-                //             url: `https://maps.googleapis.com/maps/api/directions/json?origin=${arrive}airport&destination=${nearby[i].code}airport&key=AIzaSyCtuDkDa97phIHjcGHt0HjAlMtdiigKhGc`,
-                //             type: 'GET',
-                //             dataType: 'json',
-                //             //async: false,
-                //             xhrFields: { withCredentials: true }
-                //         }).done(function (data) {
-                //             //console.log(data.routes[0].legs[0].distance.text);
-                //             if ((data.routes[0].legs[0].distance.text) <= dist) {
-                //                 alert(data.routes[0].legs[0].steps[0].html_instructions);
-                //             }
-                //         });
-                //     }
-                // }
+                for(let i = 0 ; i < nearby.length; i++) {
+                    if(nearby[i].code != arrive) {
+                        $.ajax({
+                            url: `https://maps.googleapis.com/maps/api/directions/json?origin=${arrive}airport&destination=${nearby[i].code}airport&key=AIzaSyCtuDkDa97phIHjcGHt0HjAlMtdiigKhGc`,
+                            type: 'GET',
+                            dataType: 'json',
+                            //async: false,
+                            xhrFields: { withCredentials: true }
+                        }).done(function (data) {
+                            //console.log(data.routes[0].legs[0].distance.text);
+                            if ((data.routes[0].legs[0].distance.text) <= dist) {
+                                alert('swag');
+                                $('div.slide').show();
+                            }
+                        });
+                    }
+                }
             });
         });
 
