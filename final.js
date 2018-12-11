@@ -211,7 +211,7 @@ $(document).ready(function () {
                         flightcard.children('span.depart').text(`Departs: ${dep_at.substring(11, 16)}`);
                         flightcard.children('span.arrive').text(`Arrives: ${arr_at.substring(11, 16)}`);
                         flightcard.children('p.airline').text(`Airline: ${airline}`);
-                        flightcard.parent().show();
+                        flightcard.parent().parent().show();
                     }
                 });
             });
@@ -287,7 +287,7 @@ $(document).ready(function () {
         });
     });
 
-    $('input.slider').mouseup(function () {
+    $('input.slider').change(function () {
         let dist = $('input.slider').val();
         let region = LATLONG * dist;
         let nearby = new Array();
@@ -317,22 +317,22 @@ $(document).ready(function () {
                                     nearby.push(data[i]);
                 }
                 console.log(nearby);
-                for(let i = 0 ; i < nearby.length; i++) {
-                    if(nearby[i].code != arrive) {
-                        $.ajax({
-                            url: `https://maps.googleapis.com/maps/api/directions/json?origin=${arrive}airport&destination=${nearby[i].code}airport&key=AIzaSyCtuDkDa97phIHjcGHt0HjAlMtdiigKhGc`,
-                            type: 'GET',
-                            dataType: 'json',
-                            //async: false,
-                            xhrFields: { withCredentials: true }
-                        }).done(function (data) {
-                            //console.log(data.routes[0].legs[0].distance.text);
-                            if ((data.routes[0].legs[0].distance.text) <= dist) {
-                                alert(data.routes[0].legs[0].steps[0].html_instructions);
-                            }
-                        });
-                    }
-                }
+                // for(let i = 0 ; i < nearby.length; i++) {
+                //     if(nearby[i].code != arrive) {
+                //         $.ajax({
+                //             url: `https://maps.googleapis.com/maps/api/directions/json?origin=${arrive}airport&destination=${nearby[i].code}airport&key=AIzaSyCtuDkDa97phIHjcGHt0HjAlMtdiigKhGc`,
+                //             type: 'GET',
+                //             dataType: 'json',
+                //             //async: false,
+                //             xhrFields: { withCredentials: true }
+                //         }).done(function (data) {
+                //             //console.log(data.routes[0].legs[0].distance.text);
+                //             if ((data.routes[0].legs[0].distance.text) <= dist) {
+                //                 alert(data.routes[0].legs[0].steps[0].html_instructions);
+                //             }
+                //         });
+                //     }
+                // }
             });
         });
 
