@@ -333,9 +333,13 @@ $(document).ready(function () {
                 //         });
                 //     }
                 // }
-                for (let i = 1; i < nearby.length+1; i++) {
-                  alert('yo');
+                for (let i = 1; i <= nearby.length; i++) {
                   $('#dcard'+i).parent().show();
+                }
+                if (nearby.length < 6) {
+                  for (let i = nearby.length+1; i <= 6; i++) {
+                    $('#dcard'+i).parent().hide();
+                  }
                 }
             });
         });
