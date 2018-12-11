@@ -2,7 +2,7 @@ let root = "http://comp426.cs.unc.edu:3001";
 const LATLONG = 0.01449275362;
 $(document).ready(function () {
     let body = $('body');
-    
+
     let confcodes = new Array();
     //let itininfo = new Array();
     let confcodegen = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',1,2,3,4,5,6,7,8,9,0];
@@ -364,6 +364,12 @@ $(document).ready(function () {
 
 })
 
+function upperCaseF(a){
+    setTimeout(function(){
+        a.value = a.value.toUpperCase();
+    }, 1);
+}
+
 del =  (database) => {
     $.ajax({
         url: root + '/' + database,
@@ -378,7 +384,7 @@ del =  (database) => {
                 xhrFields: {withCredentials: true}
             })
         }
-    }); 
+    });
 }
 
 seed = (num, database, info) => {
