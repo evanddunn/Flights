@@ -434,12 +434,14 @@ $(document).ready(function () {
                             });
                         }
                         console.log(instances);
+                        let origin = arrive;
                         for (let i = 1; i <= instances.length; i++) {
                             let airline;
                             let flightcard = $('#dcard' + i).children('div.flight-info');
                             let dep_at = flights[instances[i-1].info].departs_at;//instances[i-1].info.substring(11, 16);
                             let arr_at = flights[instances[i-1].info].arrives_at;
                             let airline_id = flights[instances[i-1].info].airline_id;
+                            let drive_time, distance;
                             $.ajax({
                                 url: root + '/airlines/' + airline_id,
                                 type: 'GET',
@@ -448,24 +450,38 @@ $(document).ready(function () {
                             }).done(function (data) {
                                 airline = data.name;
                             });
+                            
                             arrive = flights[instances[i-1].info].arrival_id;
                             for(let n = 0; n < nearby.length; n++) {
                                 if(nearby[n].id == arrive)
                                     arrive = nearby[n].code;
                             }
-                            flightcard.data('cost', cost);
-                            flightcard.data('instance', instances[i-1].id);
-                            flightcard.data('planeID', flights[instances[i-1].info].plane_id);
-                            flightcard.data('airline', airline);
-                            flightcard.data('depart', depart);
-                            flightcard.data('arrive', arrive);
-                            flightcard.children('h3').text(`${depart} to ${arrive}`);
-                            flightcard.children('#cost').text('Cost: $' + cost);
-                            flightcard.children('span.depart').text(`Departs: ${dep_at.substring(11, 16)}`);
-                            flightcard.children('span.arrive').text(`Arrives: ${arr_at.substring(11, 16)}`);
-                            flightcard.children('p.airline').text(`Airline: ${airline}`);
-                            flightcard.parent().parent().show();
-
+                            $.ajax({
+                                url: `https://maps.googleapis.com/maps/api/directions/json?origin=${origin}airport&destination=${arrive}airport&key=AIzaSyCtuDkDa97phIHjcGHt0HjAlMtdiigKhGc`,
+                                type: 'GET',
+                                dataType: 'json',
+                                async: false,
+                                xhrFields: { withCredentials: true }
+                            }).done(function(data) {
+                                drive_time = data.routes[0].legs[0].distance.text;
+                                distance = data.routes[0].legs[0].duration.text;
+                            });
+                                cost = Math.floor((Math.random() * 500) + 200);
+                                flightcard.data('cost', cost);
+                                flightcard.data('instance', instances[i-1].id);
+                                flightcard.data('planeID', flights[instances[i-1].info].plane_id);
+                                flightcard.data('airline', airline);
+                                flightcard.data('depart', depart);
+                                flightcard.data('arrive', arrive);
+                                flightcard.children('h3').text(`${depart} to ${arrive}`);
+                                flightcard.children('#cost').text('Cost: $' + cost);
+                                flightcard.children('span.depart').text(`Departs: ${dep_at.substring(11, 16)}`);
+                                flightcard.children('span.arrive').text(`Arrives: ${arr_at.substring(11, 16)}`);
+                                flightcard.children('p.airline').text(`Airline: ${airline}`);
+                                flightcard.children('p').children('span.drive-time').text(drive_time + ' ');
+                                flightcard.children('p').children('span.drive-miles').text(distance);
+                                flightcard.parent().parent().show();
+                            //console.log(dir);
                         }
                     });
                 //}
